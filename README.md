@@ -4,11 +4,6 @@ FrontEnd : HTML,CSS,JS
 BackEnd : Python,Django
 Database : sqlite3
 
-Already created users and its password:
-Username	Password
-user1	@prl1007
-user2	@prl1007
-
 
 To Set Up Run Application
 1.	Download the zip file from github and Download Blog.zip
