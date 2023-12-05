@@ -1,0 +1,97 @@
+{%extends 'homebase.html'%}
+{%load static%}
+{%block title%}Category Blog{%endblock%}
+{%block body%}
+<!-- wrapper -->
+<div id="wrapper">
+    <!-- content    -->
+    <div class="content">
+        <!--section   -->
+        <section class="hero-section">
+            <div class="bg-wrap hero-section_bg">
+                <div class="bg" data-bg="{%static ''%}images/bg/11.jpg"></div>
+            </div>
+            <div class="container">
+                <div class="clearfix"></div>
+                <div class="breadcrumbs-list fl-wrap">
+                    <a href="{url 'home'%%}">Home</a> <span>Category</span>
+                </div>
+            </div>
+        </section>
+        <!-- section end  -->
+        <!--section   -->
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="left_fix-bar fl-wrap">
+                            <div class="categories_nav fl-wrap">
+                                <!-- nav -->
+                                <nav class="categories_nav-inner" id="menu2">
+                                    <ul>
+                                        <li><a href="{% url 'category' 0 %}" class="act-category"><i class="fal fa-rss"></i> All Category</a></li>
+
+                                        {%for c in category%}
+                                        <li><a href="{% url 'category' c.id %}" class="act-category"><img src="{{c.icon.url}}" style="width:20px;height:20px;"> {{c.title}}</a></li>
+                                        {%endfor%}
+                                    </ul>
+                                </nav>
+                                <!-- nav end-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="main-container fl-wrap fix-container-init cen-align-container">
+                            <div class="section-title">
+                                <h3>Sorty by:</h3>
+                                <div class="steader_opt steader_opt_abs">
+                                    <select name="filter" id="list" data-placeholder="Persons" class="style-select no-search-select">
+                                        <option>Latest</option>
+                                        <option>Most Read</option>
+                                        <option>Most Viewed</option>
+                                        <option>Most Commented</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="list-post-wrap list-post-wrap_column">
+                                <!--list-post-->
+                                {%for b in blog%}
+                                <div class="list-post fl-wrap">
+                                    <a class="post-category-marker" href="">{{b.category.title}}</a>
+                                    <div class="list-post-media">
+                                        <a href="{% url 'blogdetail' b.id b.slug %}">
+                                            <div class="bg-wrap">
+                                                <div class="bg" data-bg="{{b.image.url}}"></div>
+                                            </div>
+                                        </a>
+                                        <span class="post-media_title">&copy; {{b.user.first_name}} {{b.user.last_name}}</span>
+                                    </div>
+                                    <div class="list-post-content">
+                                        <h3><a href="{% url 'blogdetail' b.id b.slug %}"></a>{{b.title}}</h3>
+                                        <span class="post-date"><i class="far fa-clock"></i> {{b.create_at}}</span>
+                                        <p>{{b.description}}</p>
+                                        <ul class="post-opt">
+                                            <li><i class="far fa-comments-alt"></i> 6 </li>
+                                            <li><i class="fal fa-eye"></i> {{b.views}} </li>
+                                        </ul>
+                                        <div class="author-link"><a href=""><img src="{{b.user.userprofile.image.url}}" alt="">  <span>By {{b.user.first_name}} {{b.user.last_name}}</span></a></div>
+                                    </div>
+                                </div>
+                                <!--list-post end-->
+                                {%endfor%}
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    {%include 'sidebar.html'%}
+                </div>
+                <div class="limit-box fl-wrap"></div>
+            </div>
+        </section>
+        <!-- section end -->
+    </div>
+    <!-- content  end-->
+</div>
+<!-- wrapper end -->
+
+{%endblock%}
