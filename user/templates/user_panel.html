@@ -1,0 +1,60 @@
+<div class="left_fix-bar fl-wrap">
+    <div class="profile-card-wrap fl-wrap">
+        <div class="profile-card_media fl-wrap">
+            <img src="{{request.user.userprofile.image.url}}" alt="">
+            <div class="profile-card_media_content">
+                <a href="{%url 'myprofile'%}"><h4>{{user.first_name}} {{user.last_name}}</h4></a>
+
+            </div>
+            <div class="abs_bg"></div>
+            <div class="profile-card-stats">
+                <ul>
+                    <li><span>27</span>Articles</li>
+                    <li><span>1567</span> Views</li>
+                </ul>
+            </div>
+        </div>
+        <div class="profile-card_content">
+            {%if user.userprofile.about_me%}
+            <h4>About</h4>
+            <p>{{request.user.userprofile.about_me}}</p>
+            {%else%}
+            <p>You have not added</p>
+            {%endif%}
+            <div class="pc_contacts">
+                <ul>
+                    {%if user.email%}
+                    <li>
+                        <span>Write:</span> <a href="#">{{request.user.email}}</a>
+                    </li>
+                    {%endif%}
+                    {%if user.userprofile.phone%}
+                    <li>
+                        <span>Call:</span> <a href="#">{{request.user.userprofile.phone}}</a>
+                    </li>
+                    {%endif%}
+                </ul>
+            </div>
+        </div>
+        <div class="profile-card-footer fl-wrap">
+            <div class="profile-card-footer_title">Follow: </div>
+            <div class="profile-card-social">
+                <ul>
+                    <li><a href="{{request.user.userprofile.facebooklink}}" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="{{request.user.userprofile.twitterlink}}" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="{{request.user.userprofile.instagramlink}}" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="{{request.user.userprofile.youtubeink}}" target="_blank"><i class="fab fa-youtube"></i></a></li>
+
+                </ul>
+            </div>
+        </div>
+
+        {%if request.user == user %}
+        <div class="profile-card-footer fl-wrap">
+            <div class="profile-card-footer_title"><a href="{%url 'userupdate'%}" class="post-category-marker purp-bg">Edit Profile</a></div>
+            <div class="profile-card-footer_title"><a href="{%url 'addblog'%}" class="post-category-marker purp-bg">Add Post</a></div>
+            <div class="profile-card-footer_title"><a href="{%url 'addcategory'%}" class="post-category-marker purp-bg">Add Category</a></div>
+        </div>
+        {%endif%}
+    </div>
+</div>
