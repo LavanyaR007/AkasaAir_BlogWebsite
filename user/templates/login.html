@@ -1,0 +1,55 @@
+{%extends 'homebase.html'%}
+{%load static%}
+{%block title%}Blog Detail{%endblock%}
+{%block body%}
+<!-- wrapper -->
+<div id="wrapper">
+    <!-- content    -->
+    <div class="content">
+        <div class="breadcrumbs-header fl-wrap">
+            <div class="container">
+                <div class="breadcrumbs-header_url">
+                    <a href="{%url 'home'%}">Home</a><span>Login</span>
+                </div>
+            </div>
+            <div class="pwh_bg"></div>
+        </div>
+        <!--section   -->
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        {% for message in messages %}
+										<div class="alert alert-{{message.tags}}" role="alert">
+											{{ message }}
+										</div>
+									{% endfor %}
+                    <img src="{% static '' %}images/bg/8.jpg" style="width:100%;height:100%;">
+                    </div>
+
+
+                    <div class="col-md-8">
+                        <div class="custom-form">
+                            <form action="" method="post" name="registerform" class="main-register-form" id="main-register-form2">
+                                {% csrf_token %}
+                                <label>User Name <span>*</span> </label>
+                                <input name="username" type="text"  value="">
+                                <label>Password <span>*</span></label>
+                                <input name="password" type="password"  value="">
+                                <button type="submit" class="log-submit-btn color-bg"><span>Login</span></button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="limit-box fl-wrap"></div>
+            </div>
+        </section>
+        <!-- section end -->
+    </div>
+    <!-- content  end-->
+
+</div>
+<!-- wrapper end -->
+
+{%endblock%}
